@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="3.0"
+    xmlns="https://jakarta.ee/xml/ns/persistence"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+
+    <persistence-unit name="CadastroEE-ejbPU" transaction-type="JTA">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <jta-data-source>jdbc/loja</jta-data-source>
+
+        <!-- MODELOS -->
+        <class>cadastroee.model.Movimento</class>
+        <class>cadastroee.model.Pessoa</class>
+        <class>cadastroee.model.PessoaFisica</class>
+        <class>cadastroee.model.PessoaJuridica</class>
+        <class>cadastroee.model.Produto</class>
+        <class>cadastroee.model.Usuario</class>
+
+        <!-- FACHADAS -->
+        <class>cadastroee.controller.AbstractFacade</class>
+        <class>cadastroee.controller.MovimentoFacade</class>
+        <class>cadastroee.controller.MovimentoFacadeLocal</class>
+        <class>cadastroee.controller.PessoaFacade</class>
+        <class>cadastroee.controller.PessoaFacadeLocal</class>
+        <class>cadastroee.controller.PessoaFisicaFacade</class>
+        <class>cadastroee.controller.PessoaFisicaFacadeLocal</class>
+        <class>cadastroee.controller.PessoaJuridicaFacade</class>
+        <class>cadastroee.controller.PessoaJuridicaFacadeLocal</class>
+        <class>cadastroee.controller.ProdutoFacade</class>
+        <class>cadastroee.controller.ProdutoFacadeLocal</class>
+        <class>cadastroee.controller.UsuarioFacade</class>
+        <class>cadastroee.controller.UsuarioFacadeLocal</class>
+
+        <!-- Inclui automaticamente classes com anotação @Entity no projeto -->
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+
+        <properties>
+            <!-- JDBC driver usado pelo GlassFish para conectar ao SQL Server -->
+            <property name="jakarta.persistence.jdbc.driver" 
+                      value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+
+            <!-- Não tentar criar ou dropar tabelas automaticamente -->
+            <property name="jakarta.persistence.schema-generation.database.action" 
+                      value="none"/>
+
+            <!-- Opcional: para exibir comandos SQL no log -->
+            <property name="eclipselink.logging.level" value="FINE"/>
+        </properties>
+    </persistence-unit>
+</persistence>
