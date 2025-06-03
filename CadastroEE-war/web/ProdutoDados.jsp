@@ -4,41 +4,49 @@
     Author     : Ivan
 --%>
 
+<!-- ProdutoDados.jsp atualizado -->
 <%@page import="cadastroee.model.Produto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <%
     Produto produto = (Produto) request.getAttribute("produto");
-    boolean editando = (produto != null);
-    String acao = editando ? "alterar" : "incluir";
+    String acao = (produto == null) ? "incluir" : "alterar";
 %>
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title><%= editando ? "Alterar" : "Incluir" %> Produto</title>
-        <style>
-            label { display: inline-block; width: 120px; }
-        </style>
-    </head>
-    <body>
-        <h3><%= editando ? "Alterar" : "Incluir" %> Produto:</h3>
-        <form action="ServletProdutoFC" method="post">
-            <% if (editando) { %>
-                <input type="hidden" name="idProduto" value="<%= produto.getIdProduto() %>"/>
-            <% } %>
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" value="<%= editando ? produto.getNome() : "" %>"/><br/>
+<head>
+    <meta charset="UTF-8">
+    <title><%= (produto == null) ? "Incluir Produto" : "Alterar Produto" %></title>
+    <style>
+        label {
+            display: inline-block;
+            width: 120px;
+        }
+    </style>
+</head>
+<body>
+    <h3><%= (produto == null) ? "Incluir Novo Produto" : "Alterar Produto" %></h3>
 
-            <label for="quantidade">Quantidade:</label>
-            <input type="number" id="quantidade" name="quantidade" value="<%= editando ? produto.getQuantidade() : "" %>"/><br/>
+    <% if (request.getAttribute("erro") != null) { %>
+        <p style="color:red;"><%= request.getAttribute("erro") %></p>
+    <% } %>
 
-            <label for="precoVenda">Preço de Venda:</label>
-            <input type="text" id="precoVenda" name="precoVenda" value="<%= editando ? produto.getPrecoVenda() : "" %>"/><br/>
+    <form action="ServletProdutoFC" method="post">
+        <input type="hidden" name="acao" value="<%= acao %>" />
+        <% if (produto != null) { %>
+            <input type="hidden" name="idProduto" value="<%= produto.getIdProduto() %>" />
+        <% } %>
 
-            <input type="hidden" name="acao" value="<%= acao %>"/>
-            <input type="submit" value="<%= editando ? "Alterar" : "Incluir" %>"/>
-        </form>
-    </body>
+        <label>Nome:</label>
+        <input type="text" name="nome" required value="<%= (produto != null) ? produto.getNome() : "" %>" />
+        <br/>
+        <label>Quantidade:</label>
+        <input type="number" name="quantidade" required min="0" step="1" value="<%= (produto != null) ? produto.getQuantidade() : "" %>" />
+        <br/>
+        <label>Preço de Venda:</label>
+        <input type="number" name="precoVenda" required min="0" step="0.01" value="<%= (produto != null) ? produto.getPrecoVenda() : "" %>" />
+        <br/>
+        <input type="submit" value="<%= (produto == null) ? "Incluir Produto" : "Alterar Produto" %>" />
+    </form>
+</body>
 </html>
