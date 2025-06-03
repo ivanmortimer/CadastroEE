@@ -23,7 +23,7 @@
         </style>
     </head>
     <body>
-        <h4><%= editando ? "Alterar" : "Incluir" %> Produto:</h4>
+        <h3><%= editando ? "Alterar" : "Incluir" %> Produto:</h3>
         <form action="ServletProdutoFC" method="post">
             <% if (editando) { %>
                 <input type="hidden" name="idProduto" value="<%= produto.getIdProduto() %>"/>

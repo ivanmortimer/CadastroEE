@@ -15,11 +15,11 @@
         <title>Lista de Produtos</title>
     </head>
     <body>
+        <h3>Listagem de Produtos:</h3>
         <a href="ServletProdutoFC?acao=formIncluir">Incluir Produto</a>
-        <h4>Lista de Produtos:</h4>
         <table border="1" width="80%">
             <tr>
-                <th>ID</th>
+                <th>Id</th>
                 <th>Nome</th>
                 <th>Quantidade</th>
                 <th>Preço de Venda</th>
