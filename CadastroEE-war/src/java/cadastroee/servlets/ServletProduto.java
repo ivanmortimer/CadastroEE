@@ -5,7 +5,7 @@
 package cadastroee.servlets;
 
 import cadastroee.model.Produto;
-import cadatroee.controller.ProdutoFacadeLocal;
+import cadastroee.controller.ProdutoFacadeLocal;
 import jakarta.ejb.EJB;
 import java.io.IOException;
 import java.io.PrintWriter;

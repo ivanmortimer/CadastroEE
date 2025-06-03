@@ -4,8 +4,16 @@
         <servlet-name>ServletProduto</servlet-name>
         <servlet-class>cadastroee.servlets.ServletProduto</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletProdutoFC</servlet-name>
+        <servlet-class>cadastroee.servlets.ServletProdutoFC</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletProduto</servlet-name>
         <url-pattern>/ServletProduto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletProdutoFC</servlet-name>
+        <url-pattern>/ServletProdutoFC</url-pattern>
     </servlet-mapping>
 </web-app>
