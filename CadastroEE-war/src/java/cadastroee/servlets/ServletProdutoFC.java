@@ -91,7 +91,7 @@ public class ServletProdutoFC extends HttpServlet {
                     try {
                         Integer id = Integer.valueOf(idStr);
                         int quantidade = Integer.parseInt(quantidadeStr);
-                        float precoVenda = Float.parseFloat(precoVendaStr.replace(',', '.'));
+                        Float precoVenda = Float.valueOf(precoVendaStr.replace(',', '.'));
 
                         Produto produto = facade.find(id);
                         if (produto != null) {
@@ -124,7 +124,7 @@ public class ServletProdutoFC extends HttpServlet {
 
                     try {
                         int quantidade = Integer.parseInt(quantidadeStr);
-                        float precoVenda = Float.parseFloat(precoVendaStr.replace(',', '.'));
+                        Float precoVenda = Float.valueOf(precoVendaStr.replace(',', '.'));
 
                         Produto novoProduto = new Produto();
                         novoProduto.setNome(nome);
@@ -139,7 +139,7 @@ public class ServletProdutoFC extends HttpServlet {
                     }
                 }
             }
-        } catch (Exception ex) {
+        } catch (NumberFormatException ex) {
             // Logar o erro e encaminhar para página de erro (opcional)
             request.setAttribute("erro", "Erro interno: " + ex.getMessage());
             destino = "ProdutoDados.jsp";

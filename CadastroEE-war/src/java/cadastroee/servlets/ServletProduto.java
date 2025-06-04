@@ -103,7 +103,7 @@ public class ServletProduto extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "Servlet Produto - Retorna uma simples página HTML listando os campos de todas as entradas da tabela 'Produto'.";
     }// </editor-fold>
 
 }
